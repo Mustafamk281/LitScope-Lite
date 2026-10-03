@@ -1,0 +1,28 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Datasets and model weights
+data/
+datasets/
+models/
+checkpoints/
+
+# Generated outputs
+outputs/
+results/
+logs/
+.ipynb_checkpoints/
+
+# Local configuration
+.vscode/
+.idea/
