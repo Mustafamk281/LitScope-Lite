@@ -80,7 +80,7 @@ The TF-IDF score is a **lexical similarity feature**, not a stance label or mode
 | Training-pair TF-IDF similarity | Median ≈ 0.127 (919 cited training pairs) | Sparse-score distributions can be inspected before future retrieval evaluations; this is not a recall or accuracy estimate. |
 | Cross-split exact-text overlap | 2 distinct shared claims (train/dev), 1 (train/test), 0 (dev/test) | Potential evaluation leakage should be checked in later modeling; supplied split memberships remain unchanged. |
 
-For complete evidence definitions, plot interpretations, data-quality considerations, and limitations, see **[Phase 1 Insights and Methodology](reports/Phase1_Insights.md)**.
+
 
 ### Selected figures
 
@@ -100,7 +100,7 @@ For complete evidence definitions, plot interpretations, data-quality considerat
 
 ![Preprocessing scaling comparison](images/03_03_standard_vs_minmax.png)
 
-A full figure index with an interpretation for every visualization appears in the [insights report](reports/Phase1_Insights.md).
+
 
 ## Repository layout
 

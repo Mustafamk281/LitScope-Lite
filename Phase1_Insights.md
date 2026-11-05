@@ -7,7 +7,7 @@
 
 ## 1. Executive summary
 
-This report documents the empirical findings from three reproducible notebooks: `01_data_cleaning.ipynb`, `02_exploratory_data_analysis.ipynb`, and `03_feature_scaling_preprocessing.ipynb`. All results are derived from the supplied SciFact corpus and official claim splits. Cleaning preserves source document IDs, abstract sentence positions, and evidence links. EDA describes evidence annotations, text-length characteristics, and possible quality risks. Numerical preprocessing produces distinct claim–document features and fits scalers exclusively on training examples.
+This report documents the empirical findings from three reproducible notebooks: `01_data_cleaning.ipynb`, `02_exploratory_data_analysis.ipynb`, and `03_feature_scaling_preprocessing.ipynb`. All results are derived from the supplied SciFact corpus and official claim splits. Cleaning preserves source document IDs, abstract sentence positions, and evidence links. EDA describes evidence annotations, text-length characteristics, and possible quality risks. Numerical preprocessing produces distinct claim–document features and fits scalers exclusively on training examples..
 
 ## 2. Data structure and observation units
 
