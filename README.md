@@ -2,7 +2,7 @@
 
 **Evidence-Based Verification of Scientific Claims Using NLP**
 
-LitScope-Lite is a research-oriented natural language processing project that investigates verification of scientific claims against evidence from scientific abstracts. The proposed pipeline combines claim segmentation, lexical and semantic evidence retrieval, sentence-level rationale selection, and stance classification. Its design also considers confidence-based review and comparison of evidence across retrieved sources. The project is an experimental verification framework, **not** a system for establishing scientific truth.
+LitScope-Lite is a research-oriented natural language processing project that investigates verification of scientific claims against evidence from scientific abstracts. The proposed pipeline combines claim segmentation, lexical and semantic evidence retrieval, sentence-level rationale selection, and stance classification. Its design also considers confidence-based review and comparison of evidence across retrieved sources. The project is an experimental verification framework, **not** a system for establishing scientific truth..
 
 This repository contains the **Phase 1 data-science work**: data quality auditing, non-destructive cleaning, exploratory data analysis (EDA), interpretable feature engineering, and numerical preprocessing. The notebooks do **not** train, tune, or evaluate a claim-verification model. The existing modules under `src/` are separate from the Phase 1 analyses.
 
