@@ -3,6 +3,7 @@
 Loads top retrieved documents from Module 2 (SciFactRetriever) for the first 5 valid
 claims in data/scifact/claims_dev.jsonl, runs RationaleSelector, and compares selected
 rationales with ground-truth evidence sentences.
+hello
 """
 
 import sys
