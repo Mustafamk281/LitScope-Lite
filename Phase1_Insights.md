@@ -7,7 +7,7 @@
 
 ## 1. Executive summary
 
-This report documents the empirical findings from three reproducible notebooks: `01_data_cleaning.ipynb`, `02_exploratory_data_analysis.ipynb`, and `03_feature_scaling_preprocessing.ipynb`. All results are derived from the supplied SciFact corpus and official claim splits. Cleaning preserves source document IDs, abstract sentence positions, and evidence links. EDA describes evidence annotations, text-length characteristics, and possible quality risks. Numerical preprocessing produces distinct claim–document features and fits scalers exclusively on training examples..
+This report documents the empirical findings from three reproducible notebooks: `01_data_cleaning.ipynb`, `02_exploratory_data_analysis.ipynb`, and `03_feature_scaling_preprocessing.ipynb`. All results are derived from the supplied SciFact corpus and official claim splits. Cleaning preserves source document IDs, abstract sentence positions, and evidence links. EDA describes evidence annotations, text-length characteristics, and possible quality risks. Numerical preprocessing produces distinct claim–document features and fits scalers exclusively on training examples.
 
 ## 2. Data structure and observation units
 
@@ -42,9 +42,7 @@ Text is normalized with **Unicode NFC** and whitespace standardization. **3,843 
 
 Quality-flag counts **overlap**: one sentence may be both short and repeated. Extreme values do not necessarily represent erroneous data. In particular, deleting or reordering sentences without remapping gold evidence indices would create annotation errors, so the cleaning policy deliberately avoids destructive edits.
 
-**Figure 01: Sentence-length quality distribution.** The distribution and upper IQR threshold identify unusually long sentence entries for inspection, not automatic removal.
-
-![Sentence-length audit](../images/01_cleaning_sentence_length_distribution.png)
+**Sentence-length quality distribution.** The distribution and upper IQR threshold identify unusually long sentence entries for inspection, not automatic removal.
 
 ## 4. Exploratory analysis and interpretation
 
@@ -52,79 +50,57 @@ Quality-flag counts **overlap**: one sentence may be both short and repeated. Ex
 
 Gold rationale annotations total **1,295**. The training split contains 616 `SUPPORT` and 341 `CONTRADICT` annotations; the development split contains 216 and 122, respectively. Combined, these are **832 (64.2%) support** and **463 (35.8%) contradiction** annotations.
 
-**Figure 02: Gold evidence annotations by stance and split.** Both annotated splits contain more `SUPPORT` than `CONTRADICT` evidence. Future verification experiments should report performance separately by class and use an imbalance-aware aggregate measure such as macro-F1. These counts represent **annotations**, not disjoint claims.
-
-![Gold evidence stance frequencies](../images/02_01_gold_evidence_stance_counts.png)
+**Gold evidence annotations by stance and split.** Both annotated splits contain more `SUPPORT` than `CONTRADICT` evidence. Future verification experiments should report performance separately by class and use an imbalance-aware aggregate measure such as macro-F1. These counts represent **annotations**, not disjoint claims.
 
 ### 4.2 Gold-evidence coverage
 
 In training, **505 of 809 claims** have at least one gold evidence annotation and **304** have none listed. In development, **188 of 300** have gold evidence and **112** have none listed.
 
-**Figure 03: Claim annotation coverage.** A substantial portion of each annotated split has no gold evidence listed. These records cannot be assigned an NEI class solely on the basis of an empty evidence dictionary; later supervised target construction needs an explicit labeling protocol.
-
-![Gold annotation coverage](../images/02_02_claim_annotation_coverage.png)
+**Claim annotation coverage.** A substantial portion of each annotated split has no gold evidence listed. These records cannot be assigned an NEI class solely on the basis of an empty evidence dictionary; later supervised target construction needs an explicit labeling protocol.
 
 ### 4.3 Claim length distribution
 
 The median claim length is **12 whitespace-delimited words** in each train, development, and test split. The distributions have tails extending beyond the typical short claim length.
 
-**Figure 04: Claim word counts by split.** Claim lengths are comparatively short and similarly centered across the supplied splits. Length variability motivates checking token-budget assumptions but does not by itself establish classification difficulty.
-
-![Claim length distribution](../images/02_03_claim_word_count_distribution.png)
+**Claim word counts by split.** Claim lengths are comparatively short and similarly centered across the supplied splits. Length variability motivates checking token-budget assumptions but does not by itself establish classification difficulty.
 
 ### 4.4 Abstract length and sentence counts
 
 The corpus median is **192 whitespace-delimited words per abstract** and **8 sentence entries per abstract**. Document lengths vary considerably, including extreme examples connected to extraction irregularities.
 
-**Figure 05: Abstract word counts.** The distribution has a right tail. The graph restricts display to the 99th percentile for readability, rather than deleting the longest abstracts from the source dataset.
+**Abstract word counts.** The distribution has a right tail. The graph restricts display to the 99th percentile for readability, rather than deleting the longest abstracts from the source dataset.
 
-![Abstract words](../images/02_04_abstract_word_count_distribution.png)
-
-**Figure 06: Abstract sentence counts.** Most abstracts comprise a modest number of sentence entries, but some have implausibly large counts caused by malformed text segmentation. Sentence-count outliers remain intact and are identified by the cleaning audit.
-
-![Abstract sentence counts](../images/02_05_abstract_sentence_count_distribution.png)
+**Abstract sentence counts.** Most abstracts comprise a modest number of sentence entries, but some have implausibly large counts caused by malformed text segmentation. Sentence-count outliers remain intact and are identified by the cleaning audit.
 
 ### 4.5 Claim length across annotated stances
 
-**Figure 07: Claim length by gold-annotation stance.** The `SUPPORT` and `CONTRADICT` length distributions overlap substantially. There is no clear descriptive evidence that claim length alone separates the two labels.
-
-![Claim length by stance](../images/02_06_claim_length_by_annotated_stance.png)
+**Claim length by gold-annotation stance.** The `SUPPORT` and `CONTRADICT` length distributions overlap substantially. There is no clear descriptive evidence that claim length alone separates the two labels.
 
 ### 4.6 Rationale length
 
 **1,210 of 1,295** labeled rationales contain **one evidence sentence** (93.4%). The remainder contain two to four sentences.
 
-**Figure 08: Rationale sentence counts.** Single-sentence evidence predominates, supporting the relevance of sentence-level rationale analysis as a modeling design choice. The multi-sentence subset should not be discarded, and prevalence does not demonstrate retrieval performance.
-
-![Rationale count by stance](../images/02_07_rationale_sentence_counts_by_stance.png)
+**Rationale sentence counts.** Single-sentence evidence predominates, supporting the relevance of sentence-level rationale analysis as a modeling design choice. The multi-sentence subset should not be discarded, and prevalence does not demonstrate retrieval performance.
 
 ### 4.7 Lexical overlap with gold rationale sentences
 
 The median token-set Jaccard overlap between claim and gold rationale is approximately **0.105** for `SUPPORT` and **0.095** for `CONTRADICT`.
 
-**Figure 09: Claim–rationale Jaccard distributions.** Both stance groups exhibit low typical token overlap and overlapping distributions. Lexical similarity can assist evidence candidate matching but cannot determine whether a sentence supports or contradicts a claim.
-
-![Claim–rationale lexical overlap](../images/02_08_claim_rationale_lexical_overlap.png)
+**Claim–rationale Jaccard distributions.** Both stance groups exhibit low typical token overlap and overlapping distributions. Lexical similarity can assist evidence candidate matching but cannot determine whether a sentence supports or contradicts a claim.
 
 ### 4.8 Descriptive rank correlations
 
 The strongest absolute Spearman association in the gold-annotated descriptive features is **ρ ≈ 0.900** between abstract word count and abstract sentence count.
 
-**Figure 10: Descriptive feature correlations.** Word and sentence counts contain related document-length information. Correlations in this table are observational and conditional on gold-annotated examples; they do not establish causal relationships, predictive usefulness, or independence between lexical and dense retrieval systems.
-
-![Gold-annotation feature correlations](../images/02_09_meta_feature_spearman_heatmap.png)
+**Descriptive feature correlations.** Word and sentence counts contain related document-length information. Correlations in this table are observational and conditional on gold-annotated examples; they do not establish causal relationships, predictive usefulness, or independence between lexical and dense retrieval systems.
 
 ### 4.9 Cited-document counts
 
-**Figure 11: Cited documents per claim.** Most training and development claims cite a single document, while a smaller subset cite multiple documents. This is a distribution of **citations**, not a ranking of model-retrieved documents or a guarantee that each cited document contains evidence.
-
-![Cited-document counts](../images/02_10_cited_documents_per_claim.png)
+**Cited documents per claim.** Most training and development claims cite a single document, while a smaller subset cite multiple documents. This is a distribution of **citations**, not a ranking of model-retrieved documents or a guarantee that each cited document contains evidence.
 
 ### 4.10 Data-quality flag frequencies
 
-**Figure 12: Sentence quality flags.** Long, very short, and repeated sentence entries are present. Categories overlap; their totals must not be combined into an affected-row count without deduplication.
-
-![Sentence quality flag counts](../images/02_11_sentence_quality_flag_counts.png)
+**Sentence quality flags.** Long, very short, and repeated sentence entries are present. Categories overlap; their totals must not be combined into an affected-row count without deduplication.
 
 ## 5. Numerical features and preprocessing
 
@@ -144,35 +120,25 @@ The fixed corpus of titles and abstracts is used to construct the TF-IDF documen
 
 ### 5.2 Raw feature distributions
 
-**Figure 13: Unscaled training features.** Counts, ratios and lexical similarities have different native ranges and patterns. Applying one universal raw scale would complicate numerical comparison; the chart provides a descriptive basis for comparing transformations.
-
-![Unscaled feature distributions](../images/03_01_unscaled_feature_distributions.png)
+**Unscaled training features.** Counts, ratios and lexical similarities have different native ranges and patterns. Applying one universal raw scale would complicate numerical comparison; the chart provides a descriptive basis for comparing transformations.
 
 ### 5.3 Count transformation
 
 The preprocessing notebook applies `log1p` to five nonnegative count variables: claim words, claim characters, title words, abstract words, and abstract sentence counts. For example, **abstract word-count skewness decreases from approximately 1.352 to 0.472** after transformation, measured on the training pair table.
 
-**Figure 14: Log transformation of count features.** Logarithmic compression reduces the extreme positive tail for selected count variables. It is a transparent transformation, not outlier deletion.
-
-![Count transformations](../images/03_02_count_log_transformation.png)
+**Log transformation of count features.** Logarithmic compression reduces the extreme positive tail for selected count variables. It is a transparent transformation, not outlier deletion.
 
 ### 5.4 Train-fitted scaling
 
 `StandardScaler` and `MinMaxScaler` are fitted using **only the 919 training pairs**. Fitted parameters are then applied unchanged to **339 development pairs**. The exported scaled CSV contains parallel standard-score and min–max representations of each feature. Test claim–document rows are not fabricated because the test files do not contain the cited-document IDs needed for this pair construction.
 
-**Figure 15: Standard versus min–max scaling.** The graphs compare resulting feature locations and ranges. Linear scaling does not generally remove skewness, and neither method is claimed to improve verification accuracy without model experiments.
-
-![Scaling methods](../images/03_03_standard_vs_minmax.png)
+**Standard versus min–max scaling.** The graphs compare resulting feature locations and ranges. Linear scaling does not generally remove skewness, and neither method is claimed to improve verification accuracy without model experiments.
 
 ### 5.5 Feature correlation and distribution comparison
 
-**Figure 16: Pair-feature Spearman correlations.** Text-length measures are associated with each other, while some overlap and TF-IDF features capture different descriptive aspects. Correlation alone does not justify removing, selecting, or weighting features.
+**Pair-feature Spearman correlations.** Text-length measures are associated with each other, while some overlap and TF-IDF features capture different descriptive aspects. Correlation alone does not justify removing, selecting, or weighting features.
 
-![Pair feature correlations](../images/03_04_feature_spearman_correlations.png)
-
-**Figure 17: Training/development feature comparisons.** Selected features are compared across train and development after a transformation fitted exclusively on the training split. This supports detection of distribution differences before later evaluation but is not a robustness result.
-
-![Train-development comparisons](../images/03_05_train_dev_feature_comparison.png)
+**Training/development feature comparisons.** Selected features are compared across train and development after a transformation fitted exclusively on the training split. This supports detection of distribution differences before later evaluation but is not a robustness result.
 
 The median TF-IDF similarity for cited training pairs is approximately **0.1272**, compared with **0.1224** for cited development pairs. These medians are descriptive of cited-pair sampling only and cannot be interpreted as retrieval accuracy, domain discrimination, or an optimal rejection threshold.
 
@@ -205,3 +171,13 @@ The Phase 1 analysis has several important boundaries. The data are a scientific
 ## 8. Data source
 
 Wadden, D., Lin, S., Lo, K., Wang, L. L., van Zuylen, M., Cohan, A., and Hajishirzi, H. (2020). *Fact or Fiction: Verifying Scientific Claims*. EMNLP. [AllenAI SciFact repository](https://github.com/allenai/scifact) · [Dataset schema](https://github.com/allenai/scifact/blob/master/doc/data.md) · [Data licenses](https://github.com/allenai/scifact/blob/master/LICENSE.md).
+
+## 9. Supporting visualizations
+
+The corresponding plots and supporting visual evidence are available in the repository's `images/` directory. The figures are organized by analysis stage and can be consulted to verify the distributions, comparisons, quality flags, and correlations discussed in this report. No figures are embedded in this document.
+
+**Data cleaning:** `01_cleaning_sentence_length_distribution.png`.
+
+**Exploratory data analysis:** `02_01_gold_evidence_stance_counts.png`, `02_02_claim_annotation_coverage.png`, `02_03_claim_word_count_distribution.png`, `02_04_abstract_word_count_distribution.png`, `02_05_abstract_sentence_count_distribution.png`, `02_06_claim_length_by_annotated_stance.png`, `02_07_rationale_sentence_counts_by_stance.png`, `02_08_claim_rationale_lexical_overlap.png`, `02_09_meta_feature_spearman_heatmap.png`, `02_10_cited_documents_per_claim.png`, and `02_11_sentence_quality_flag_counts.png`.
+
+**Feature engineering and preprocessing:** `03_01_unscaled_feature_distributions.png`, `03_02_count_log_transformation.png`, `03_03_standard_vs_minmax.png`, `03_04_feature_spearman_correlations.png`, and `03_05_train_dev_feature_comparison.png`.
