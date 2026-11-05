@@ -1,4 +1,4 @@
-﻿"""Integration Test for Module 4: Stance Classification with DeBERTa-v3-xsmall.
+﻿"""Integration Test for Module 4: Stance Classification with Two-Tier Routing.
 
 Pipeline: Module 2 (Retrieve) -> Module 3 (Select Rationales) -> Module 4 (Predict Stance).
 Evaluates first 5 valid dev claims against ground-truth labels from claims_dev.jsonl.
@@ -24,7 +24,7 @@ from src.utils import get_data_path, load_jsonl
 
 def test_stance_classification():
     print("=" * 80)
-    print("LitScope-Lite: Module 4 — Stance Classifier (DeBERTa-v3-xsmall)")
+    print("LitScope-Lite: Module 4 — Stance Classifier (Two-Tier Routing)")
     print("=" * 80)
 
     dev_path = get_data_path("claims_dev.jsonl")
@@ -36,7 +36,9 @@ def test_stance_classification():
     print("Initializing pipeline: SciFactRetriever + RationaleSelector + StanceClassifier...")
     retriever = SciFactRetriever()
     selector = RationaleSelector(model=retriever.dense_model, threshold=0.40, top_k=3)
-    classifier = StanceClassifier(model_name="cross-encoder/nli-deberta-v3-xsmall")
+    
+    # Initialize the updated two-tier classifier
+    classifier = StanceClassifier(confidence_threshold=0.60)
     print("Pipeline ready!\n")
 
     for i, claim_item in enumerate(test_claims, start=1):
@@ -66,10 +68,13 @@ def test_stance_classification():
                 claim=claim_text, doc=doc, threshold=0.40, top_k=3
             )
             rationale_text = " ".join(rationale_result["rationales"]).strip()
+            
+            # Predict stance and capture the new model_used key
             pred = classifier.predict_stance(claim_text, rationale_text)
             pl = pred["label"]
             conf = pred["confidence"]
             probs = pred["probabilities"]
+            model_used = pred["model_used"]
 
             gold_tag = f"[GOLD: {gold_label}]" if is_gold else "[DISTRACTOR]"
             match = "✓" if (is_gold and pl == gold_label) else ("✗" if is_gold else " ")
@@ -79,6 +84,7 @@ def test_stance_classification():
             for s_idx, s_text in zip(rationale_result["sentence_indices"], rationale_result["rationales"]):
                 print(f"      [Sent #{s_idx}]: \"{s_text}\"")
             print(f"    Predicted: {pl} (conf={conf:.4f}) {match}")
+            print(f"    Model Used: {model_used}")
             print(f"    Probabilities -> SUPPORT: {probs['SUPPORT']:.4f} | CONTRADICT: {probs['CONTRADICT']:.4f} | NOT_ENOUGH_INFO: {probs['NOT_ENOUGH_INFO']:.4f}")
 
         print()
