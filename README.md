@@ -197,6 +197,19 @@ Full analysis, confusion matrices, and plots are in [`notebooks/04_modeling_eval
 - **End-to-End Pipeline (60 dev claims, no oracle rationales):** **83.33% Recall@3**, **45.00% accuracy**, **0.5569 Macro-F1**, and **4 cross-source conflict cases** surfaced (`images/04_05_end_to_end_outcomes.png`).
 - **Controlled Claim-Edit Consistency (5 test cases):** **100% (5/5)** paraphrase consistency and **100% (5/5)** negation-flip rate.
 
+## Interactive Web Application (`web/app.py`)
+
+LitScope-Lite includes a Streamlit web interface in the `web/` directory allowing users to enter scientific claims, tune retrieval (`Top-K`) and two-tier routing thresholds (`tau`), and inspect verdict badges, confidence scores, model routing tiers, and extracted rationale sentences.
+
+```bash
+# Launch the interactive web app locally
+streamlit run web/app.py
+```
+
+## Conclusion
+
+LitScope-Lite demonstrates that a lightweight, CPU-friendly four-module pipeline can verify biomedical claims with transparent, sentence-level rationales. Hybrid TF-IDF + MiniLM retrieval achieves **89.56% Recall@5** and **96.38% Recall@10** (`MRR@10 = 0.7943`), while calibrating the two-tier DeBERTa NLI escalation threshold to **`0.95`** recovers **98%** of the larger model's accuracy while cutting average CPU inference latency by **39.0%**. In practice, the system provides reliable perturbation sensitivity (**100%** paraphrase consistency and negation flips) and surfaces cross-source evidence conflicts, while highlighting zero-shot biomedical domain adaptation as the primary avenue for future improvement.
+
 ## Scope and limitations
 
 - All statistical findings describe the supplied SciFact files, not general performance on arbitrary scientific literature.
