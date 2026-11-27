@@ -1,0 +1,228 @@
+{
+  "retrieval": {
+    "num_dev_claims_total": 300,
+    "num_dev_claims_with_gold_evidence": 188,
+    "mrr_at_10": 0.7943,
+    "elapsed_seconds": 11.45,
+    "metrics_by_k": {
+      "1": {
+        "recall": 0.6844,
+        "precision": 0.7074
+      },
+      "3": {
+        "recall": 0.8326,
+        "precision": 0.2926
+      },
+      "5": {
+        "recall": 0.8956,
+        "precision": 0.1904
+      },
+      "10": {
+        "recall": 0.9638,
+        "precision": 0.1053
+      }
+    }
+  },
+  "stance_and_routing": {
+    "num_gold_pairs": 338,
+    "default_threshold": 0.6,
+    "classification_report_at_0.60": {
+      "SUPPORT": {
+        "precision": 0.9242424242424242,
+        "recall": 0.2824074074074074,
+        "f1-score": 0.4326241134751773,
+        "support": 216.0
+      },
+      "CONTRADICT": {
+        "precision": 0.8172043010752689,
+        "recall": 0.6229508196721312,
+        "f1-score": 0.7069767441860465,
+        "support": 122.0
+      },
+      "NOT_ENOUGH_INFO": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "accuracy": 0.40532544378698226,
+      "macro avg": {
+        "precision": 0.5804822417725644,
+        "recall": 0.30178607569317956,
+        "f1-score": 0.37986695255374126,
+        "support": 338.0
+      },
+      "weighted avg": {
+        "precision": 0.885607362034161,
+        "recall": 0.40532544378698226,
+        "f1-score": 0.5316508026666745,
+        "support": 338.0
+      }
+    },
+    "confusion_matrix_labels": [
+      "SUPPORT",
+      "CONTRADICT",
+      "NOT_ENOUGH_INFO"
+    ],
+    "confusion_matrix_at_0.60": [
+      [
+        61,
+        17,
+        138
+      ],
+      [
+        5,
+        76,
+        41
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "threshold_sweep": [
+      {
+        "threshold": 0.0,
+        "mode": "base_only",
+        "accuracy": 0.4112,
+        "macro_f1_support_contradict": 0.5712,
+        "escalation_rate": 0.0,
+        "nei_abstention_rate": 0.5178,
+        "avg_latency_ms": 99.34
+      },
+      {
+        "threshold": 0.4,
+        "mode": "two_tier_0.40",
+        "accuracy": 0.4112,
+        "macro_f1_support_contradict": 0.5712,
+        "escalation_rate": 0.0,
+        "nei_abstention_rate": 0.5178,
+        "avg_latency_ms": 99.34
+      },
+      {
+        "threshold": 0.5,
+        "mode": "two_tier_0.50",
+        "accuracy": 0.4112,
+        "macro_f1_support_contradict": 0.5712,
+        "escalation_rate": 0.0059,
+        "nei_abstention_rate": 0.5178,
+        "avg_latency_ms": 100.87
+      },
+      {
+        "threshold": 0.6,
+        "mode": "two_tier_0.60",
+        "accuracy": 0.4053,
+        "macro_f1_support_contradict": 0.5698,
+        "escalation_rate": 0.0651,
+        "nei_abstention_rate": 0.5296,
+        "avg_latency_ms": 116.93
+      },
+      {
+        "threshold": 0.7,
+        "mode": "two_tier_0.70",
+        "accuracy": 0.4083,
+        "macro_f1_support_contradict": 0.5717,
+        "escalation_rate": 0.1272,
+        "nei_abstention_rate": 0.5266,
+        "avg_latency_ms": 133.11
+      },
+      {
+        "threshold": 0.8,
+        "mode": "two_tier_0.80",
+        "accuracy": 0.4231,
+        "macro_f1_support_contradict": 0.5883,
+        "escalation_rate": 0.2012,
+        "nei_abstention_rate": 0.5178,
+        "avg_latency_ms": 152.26
+      },
+      {
+        "threshold": 0.9,
+        "mode": "two_tier_0.90",
+        "accuracy": 0.432,
+        "macro_f1_support_contradict": 0.5983,
+        "escalation_rate": 0.3284,
+        "nei_abstention_rate": 0.5118,
+        "avg_latency_ms": 188.68
+      },
+      {
+        "threshold": 0.95,
+        "mode": "two_tier_0.95",
+        "accuracy": 0.4467,
+        "macro_f1_support_contradict": 0.6106,
+        "escalation_rate": 0.4586,
+        "nei_abstention_rate": 0.4941,
+        "avg_latency_ms": 222.93
+      },
+      {
+        "threshold": 1.01,
+        "mode": "large_only",
+        "accuracy": 0.4556,
+        "macro_f1_support_contradict": 0.625,
+        "escalation_rate": 1.0,
+        "nei_abstention_rate": 0.497,
+        "avg_latency_ms": 365.58
+      }
+    ]
+  },
+  "end_to_end_sample": {
+    "sample_size": 60,
+    "end_to_end_accuracy": 0.45,
+    "end_to_end_macro_f1_support_contradict": 0.5569,
+    "gold_doc_recall_at_3": 0.8333,
+    "nei_abstention_rate": 0.3667,
+    "cross_source_conflict_cases": 4
+  },
+  "consistency_edits": {
+    "num_cases": 5,
+    "paraphrase_consistency_rate": 1.0,
+    "negation_flip_rate": 1.0,
+    "cases": [
+      {
+        "original_claim": "Vitamin D deficiency is associated with an increased risk of osteoporosis.",
+        "orig_label": "SUPPORT",
+        "orig_conf": 0.9935,
+        "paraphrase_label": "SUPPORT",
+        "paraphrase_consistent": true,
+        "negated_label": "CONTRADICT",
+        "negation_flipped": true
+      },
+      {
+        "original_claim": "Aspirin reduces the risk of myocardial infarction in high-risk patients.",
+        "orig_label": "SUPPORT",
+        "orig_conf": 0.9934,
+        "paraphrase_label": "SUPPORT",
+        "paraphrase_consistent": true,
+        "negated_label": "CONTRADICT",
+        "negation_flipped": true
+      },
+      {
+        "original_claim": "Elevated blood glucose levels impair wound healing in diabetic patients.",
+        "orig_label": "SUPPORT",
+        "orig_conf": 0.9883,
+        "paraphrase_label": "SUPPORT",
+        "paraphrase_consistent": true,
+        "negated_label": "CONTRADICT",
+        "negation_flipped": true
+      },
+      {
+        "original_claim": "Regular aerobic exercise lowers resting systolic blood pressure.",
+        "orig_label": "SUPPORT",
+        "orig_conf": 0.993,
+        "paraphrase_label": "SUPPORT",
+        "paraphrase_consistent": true,
+        "negated_label": "CONTRADICT",
+        "negation_flipped": true
+      },
+      {
+        "original_claim": "Antibiotics are effective against viral respiratory infections.",
+        "orig_label": "CONTRADICT",
+        "orig_conf": 0.998,
+        "paraphrase_label": "CONTRADICT",
+        "paraphrase_consistent": true,
+        "negated_label": "SUPPORT",
+        "negation_flipped": true
+      }
+    ]
+  }
+}
