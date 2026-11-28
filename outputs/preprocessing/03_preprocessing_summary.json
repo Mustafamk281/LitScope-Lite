@@ -1,0 +1,59 @@
+{
+  "pair_counts": {
+    "train": 919,
+    "dev": 339
+  },
+  "claim_counts": {
+    "train": 809,
+    "dev": 300,
+    "test": 300
+  },
+  "annotation_status_counts": {
+    "dev:ANNOTATED": 209,
+    "dev:UNANNOTATED": 130,
+    "train:ANNOTATED": 564,
+    "train:UNANNOTATED": 355
+  },
+  "feature_counts": {
+    "raw": 11,
+    "scaled_per_method": 11
+  },
+  "training_tfidf_scores": {
+    "median": 0.1272005133986731,
+    "mean": 0.13650651239482695
+  },
+  "raw_vs_log_skewness": [
+    {
+      "feature": "claim_word_count",
+      "raw_skewness": 0.8026151662806827,
+      "log1p_skewness": -0.15292921733828801
+    },
+    {
+      "feature": "claim_char_count",
+      "raw_skewness": 0.7658129649106911,
+      "log1p_skewness": -0.12400231126216743
+    },
+    {
+      "feature": "title_word_count",
+      "raw_skewness": 1.037021616502442,
+      "log1p_skewness": -0.5856309645886053
+    },
+    {
+      "feature": "abstract_word_count",
+      "raw_skewness": 1.3519796257710275,
+      "log1p_skewness": 0.47225807995442737
+    },
+    {
+      "feature": "abstract_sentence_count",
+      "raw_skewness": 1.0893589805365327,
+      "log1p_skewness": 0.34704247974623187
+    }
+  ],
+  "output_files": {
+    "raw_pairs": "data/processed/scifact_features_raw.csv",
+    "scaled_pairs": "data/processed/scifact_features_scaled.csv",
+    "claim_features": "data/processed/scifact_claim_features.csv",
+    "scalers": "data/processed/scifact_scalers.joblib",
+    "metadata": "data/processed/scifact_feature_scaling_metadata.json"
+  }
+}

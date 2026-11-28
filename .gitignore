@@ -1,28 +1,52 @@
 
-# Python
+# Python caches and compiled files
 __pycache__/
 *.py[cod]
 *.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
 .venv/
 venv/
+env/
 
 # Environment variables and secrets
 .env
 .env.*
 !.env.example
+.streamlit/secrets.toml
 
-# Datasets and model weights
+# Datasets and pretrained model files
 data/
 datasets/
 models/
 checkpoints/
 
 # Generated outputs
-outputs/
+outputs/*
+
+# Preserve experimental evidence
+!outputs/evaluation/
+!outputs/eda/
+!outputs/preprocessing/
+
+# Other generated files
 results/
 logs/
+*.log
 .ipynb_checkpoints/
+verification_report.json
+litscope_verification_report.json
 
-# Local configuration
+# Local editor configuration
 .vscode/
 .idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak

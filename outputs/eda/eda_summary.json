@@ -1,0 +1,71 @@
+{
+  "dataset": "SciFact cleaned data (schema-preserving, 01_data_cleaning.ipynb)",
+  "corpus_documents": 5183,
+  "abstract_sentences": 45952,
+  "claims_by_split": {
+    "train": 809,
+    "dev": 300,
+    "test": 300
+  },
+  "evidence_annotation_count_by_label": {
+    "SUPPORT": 832,
+    "CONTRADICT": 463
+  },
+  "no_gold_evidence_listed_by_split": {
+    "train": 304,
+    "dev": 112
+  },
+  "median_claim_word_count_by_split": {
+    "train": 12.0,
+    "dev": 12.0,
+    "test": 12.0
+  },
+  "median_abstract_word_count": 192.0,
+  "median_abstract_sentence_count": 8.0,
+  "single_sentence_rationale_count": 1210,
+  "total_evidence_annotations": 1295,
+  "median_claim_rationale_jaccard_by_label": {
+    "CONTRADICT": 0.09523809523809523,
+    "SUPPORT": 0.10526315789473684
+  },
+  "highest_abs_spearman_feature_pair": [
+    "Abstract sentences",
+    "Abstract words"
+  ],
+  "highest_abs_spearman_coefficient": 0.90010294575849,
+  "cross_split_exact_claim_text_overlap": [
+    {
+      "split_a": "train",
+      "split_b": "dev",
+      "shared_distinct_claim_texts": 2
+    },
+    {
+      "split_a": "train",
+      "split_b": "test",
+      "shared_distinct_claim_texts": 1
+    },
+    {
+      "split_a": "dev",
+      "split_b": "test",
+      "shared_distinct_claim_texts": 0
+    }
+  ],
+  "severely_repetitive_doc_ids": [
+    12207167,
+    36271512,
+    86217760
+  ],
+  "figures": [
+    "02_01_gold_evidence_stance_counts.png",
+    "02_02_claim_annotation_coverage.png",
+    "02_03_claim_word_count_distribution.png",
+    "02_04_abstract_word_count_distribution.png",
+    "02_05_abstract_sentence_count_distribution.png",
+    "02_06_claim_length_by_annotated_stance.png",
+    "02_07_rationale_sentence_counts_by_stance.png",
+    "02_08_claim_rationale_lexical_overlap.png",
+    "02_09_meta_feature_spearman_heatmap.png",
+    "02_10_cited_documents_per_claim.png",
+    "02_11_sentence_quality_flag_counts.png"
+  ]
+}

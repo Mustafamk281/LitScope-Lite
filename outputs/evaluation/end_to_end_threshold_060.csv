@@ -1,0 +1,61 @@
+claim_id,claim,gold_label,pred_label,pred_conf,gold_doc_retrieved_top3,num_docs_with_rationales,cross_source_conflict
+3,"1,000 genomes project enables mapping of genetic sequence variation consisting of rare variants with larger penetrance effects than common variants.",SUPPORT,NOT_ENOUGH_INFO,1.0,True,3,False
+5,1/2000 in UK have abnormal PrP positivity.,SUPPORT,NOT_ENOUGH_INFO,1.0,True,3,False
+42,A high microerythrocyte count raises vulnerability to severe anemia in homozygous alpha (+)- thalassemia trait subjects.,CONTRADICT,CONTRADICT,0.9694,True,3,False
+48,"A total of 1,000 people in the UK are asymptomatic carriers of vCJD infection.",CONTRADICT,CONTRADICT,0.9621,True,3,False
+49,ADAR1 binds to Dicer to cleave pre-miRNA.,SUPPORT,CONTRADICT,0.9687,True,3,True
+50,AIRE is expressed in some skin tumors.,SUPPORT,SUPPORT,0.6761,True,3,False
+51,ALDH1 expression is associated with better breast cancer outcomes.,CONTRADICT,CONTRADICT,0.995,True,3,False
+53,ALDH1 expression is associated with poorer prognosis in breast cancer.,SUPPORT,SUPPORT,0.9893,True,3,False
+54,AMP-activated protein kinase (AMPK) activation increases inflammation-related fibrosis in the lungs.,CONTRADICT,CONTRADICT,0.9805,False,3,False
+56,APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation causing GABA neuron degeneration.,SUPPORT,CONTRADICT,0.9877,True,3,False
+57,"APOE4 expression in iPSC-derived neurons increases AlphaBeta production and tau phosphorylation, delaying GABA neuron degeneration.",CONTRADICT,CONTRADICT,0.9866,True,3,False
+70,Activation of PPM1D suppresses p53 function.,SUPPORT,NOT_ENOUGH_INFO,1.0,True,3,False
+100,All hematopoietic stem cells segregate their chromosomes randomly.,SUPPORT,CONTRADICT,0.9555,True,3,False
+113,Angiotensin converting enzyme inhibitors are associated with increased risk for functional renal insufficiency.,SUPPORT,NOT_ENOUGH_INFO,1.0,True,3,False
+115,Anthrax spores can be disposed of easily after they are dispersed.,CONTRADICT,NOT_ENOUGH_INFO,1.0,True,3,False
+118,Antibiotic induced alterations in the gut microbiome reduce resistance against Clostridium difficile,SUPPORT,CONTRADICT,0.9935,True,3,False
+124,Antiretroviral therapy reduces rates of tuberculosis across a broad range of CD4 strata.,SUPPORT,SUPPORT,0.9346,True,3,False
+129,Articles published in open access format are less likely to be cited than traditional journals.,CONTRADICT,CONTRADICT,0.9789,True,3,False
+130,Articles published in open access format are more likely to be cited than traditional journals.,SUPPORT,NOT_ENOUGH_INFO,1.0,True,3,False
+133,"Assembly of invadopodia is triggered by focal generation of phosphatidylinositol-3,4-biphosphate and the activation of the nonreceptor tyrosine kinase Src.",SUPPORT,NOT_ENOUGH_INFO,1.0,False,3,False
+137,Asymptomatic visual impairment screening in elderly populations does not lead to improved vision.,SUPPORT,CONTRADICT,0.9876,True,3,False
+141,Auditory entrainment is strengthened when people see congruent visual and auditory information.,SUPPORT,CONTRADICT,0.9922,True,3,False
+142,Autologous transplantation of mesenchymal stem cells causes a higher rate of opportunistic infections than induction therapy with anti-interleukin-2 receptor antibodies.,CONTRADICT,CONTRADICT,0.9977,True,3,False
+143,Autologous transplantation of mesenchymal stem cells causes fewer opportunistic infections than induction therapy with anti-interleukin-2 receptor antibodies.,SUPPORT,SUPPORT,0.9221,True,3,False
+146,Autologous transplantation of mesenchymal stem cells has lower rates of rejection than induction therapy with anti-interleukin-2 receptor antibodies.,SUPPORT,SUPPORT,0.9649,True,3,False
+148,Autophagy declines in aged organisms.,SUPPORT,SUPPORT,0.966,True,3,False
+163,Bariatric surgery has a positive impact on mental health.,SUPPORT,NOT_ENOUGH_INFO,1.0,True,3,False
+171,Basophils counteract disease development in patients with systemic lupus erythematosus (SLE).,CONTRADICT,CONTRADICT,0.9562,True,3,False
+179,Birth-weight is positively associated with breast cancer.,SUPPORT,SUPPORT,0.9469,True,3,True
+180,Blocking the interaction between TDP-43 and respiratory complex I proteins ND3 and ND6 leads to increased TDP-43-induced neuronal loss.,CONTRADICT,NOT_ENOUGH_INFO,1.0,True,3,False
+183,Bone marrow cells contribute to adult macrophage compartments.,CONTRADICT,NOT_ENOUGH_INFO,1.0,False,3,False
+185,Breast cancer development is determined exclusively by genetic factors.,CONTRADICT,CONTRADICT,0.9984,False,3,False
+208,CHEK2 is not associated with breast cancer.,SUPPORT,CONTRADICT,0.9985,True,3,True
+212,CR is associated with higher methylation age.,CONTRADICT,NOT_ENOUGH_INFO,1.0,True,3,False
+216,CX3CR1 on the Th2 cells impairs T cell survival,CONTRADICT,CONTRADICT,0.9799,True,3,False
+217,CX3CR1 on the Th2 cells promotes T cell survival,SUPPORT,NOT_ENOUGH_INFO,1.0,True,3,False
+218,CX3CR1 on the Th2 cells promotes airway inflammation.,SUPPORT,CONTRADICT,0.9894,True,3,False
+219,CX3CR1 on the Th2 cells suppresses airway inflammation.,CONTRADICT,NOT_ENOUGH_INFO,1.0,True,3,False
+230,Carriers of the alcohol aldehyde dehydrogenase deficiency mutation drink less that non-carries.,SUPPORT,SUPPORT,0.9335,True,3,False
+233,Cell autonomous sex determination in somatic cells does not occur in Galliformes.,CONTRADICT,CONTRADICT,0.9013,True,3,False
+236,Cell autonomous sex determination in somatic cells occurs in Passeriformes.,SUPPORT,CONTRADICT,0.7957,True,3,False
+239,Cellular aging closely links to an older appearance.,SUPPORT,SUPPORT,0.8463,False,3,False
+248,Chenodeosycholic acid treatment increases whole-body energy expenditure.,SUPPORT,NOT_ENOUGH_INFO,1.0,True,3,False
+249,Chenodeosycholic acid treatment reduces whole-body energy expenditure.,CONTRADICT,CONTRADICT,0.9948,True,3,False
+261,"Chronic aerobic exercise alters endothelial function, improving vasodilating mechanisms mediated by NO.",SUPPORT,NOT_ENOUGH_INFO,1.0,False,3,False
+274,Combination nicotine replacement therapies with varenicline or bupropion lead to significantly higher long-term abstinence rates at 52 weeks than varenicline monotherapy.,CONTRADICT,NOT_ENOUGH_INFO,1.0,True,3,False
+275,Combining phosphatidylinositide 3-kinase and MEK 1/2 inhibitors is effective at treating KRAS mutant tumors.,SUPPORT,CONTRADICT,0.8511,True,3,False
+279,Commelina yellow mottle virus' (ComYMV) genome consists of 7489 baise pairs.,SUPPORT,CONTRADICT,0.8577,True,3,False
+295,Crosstalk between dendritic cells (DCs) and innate lymphoid cells (ILCs) is important in the regulation of intestinal homeostasis.,SUPPORT,NOT_ENOUGH_INFO,1.0,True,3,False
+298,Cytochrome c is released from the mitochondrial intermembrane space to cytosol during apoptosis.,SUPPORT,NOT_ENOUGH_INFO,1.0,True,3,False
+314,Deamination of cytidine to uridine on the minus strand of viral DNA results in catastrophic G-to-A mutations in the viral genome.,SUPPORT,NOT_ENOUGH_INFO,1.0,False,3,False
+327,Deletion of αvβ8 does not result in a spontaneous inflammatory phenotype.,SUPPORT,SUPPORT,0.9887,True,3,False
+338,Dexamethasone decreases risk of postoperative bleeding.,CONTRADICT,CONTRADICT,0.997,True,3,False
+343,Diabetic patients with acute coronary syndrome experience increased short-term and long-term risk for bleeding events.,SUPPORT,NOT_ENOUGH_INFO,1.0,True,3,False
+380,Enhanced early production of inflammatory chemokines improves viral control in the lung.,SUPPORT,SUPPORT,0.8318,True,3,True
+385,Epigenetic modulating agents (EMAs) modulate antitumor immune response in a cancer model system.,SUPPORT,SUPPORT,0.9616,False,3,False
+386,Errors in peripheral IV drug administration are most common during bolus administration and multiple-step medicine preparations.,SUPPORT,SUPPORT,0.9661,True,3,False
+399,Exposure to fine particulate air pollution is relate to anxiety prevalence.,SUPPORT,SUPPORT,0.8379,True,3,False
+415,Female carriers of the Apolipoprotein E4 (APOE4) allele have increased risk for dementia.,SUPPORT,NOT_ENOUGH_INFO,1.0,False,3,False
+431,FoxO3a activation in neuronal death is mediated by reactive oxygen species (ROS).,SUPPORT,NOT_ENOUGH_INFO,1.0,False,3,False

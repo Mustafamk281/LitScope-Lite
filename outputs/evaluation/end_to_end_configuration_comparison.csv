@@ -1,0 +1,3 @@
+threshold,num_claims,accuracy,macro_f1,gold_doc_hit_rate,joint_label_gold_hit_rate,selected_gold_source_correct_rate,decisive_coverage,decisive_accuracy,correct,wrong_polarity,nei,potential_conflicts
+0.6,60,0.45,0.5568710359408033,0.8333333333333334,0.38333333333333336,,0.6333333333333333,0.7105263157894737,27,11,22,4
+0.95,60,0.43333333333333335,0.5296296296296296,0.8333333333333334,0.38333333333333336,0.3,0.65,0.6666666666666666,26,13,21,4

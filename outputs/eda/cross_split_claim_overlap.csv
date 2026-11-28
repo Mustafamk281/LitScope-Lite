@@ -1,0 +1,4 @@
+split_a,split_b,shared_distinct_claim_texts
+train,dev,2
+train,test,1
+dev,test,0

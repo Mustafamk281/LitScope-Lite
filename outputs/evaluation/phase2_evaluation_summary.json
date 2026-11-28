@@ -26,6 +26,9 @@
   "stance_and_routing": {
     "num_gold_pairs": 338,
     "default_threshold": 0.6,
+    "selected_threshold": 0.95,
+    "evaluation_scope": "Gold SUPPORT/CONTRADICT rationale pairs on SciFact dev; no gold NEI examples.",
+    "latency_method": "Estimated per-pair classifier latency from saved timings; excludes retrieval, startup and UI.",
     "classification_report_at_0.60": {
       "SUPPORT": {
         "precision": 0.9242424242424242,
@@ -59,11 +62,6 @@
         "support": 338.0
       }
     },
-    "confusion_matrix_labels": [
-      "SUPPORT",
-      "CONTRADICT",
-      "NOT_ENOUGH_INFO"
-    ],
     "confusion_matrix_at_0.60": [
       [
         61,
@@ -81,6 +79,61 @@
         0
       ]
     ],
+    "classification_report_at_0.95": {
+      "SUPPORT": {
+        "precision": 0.9583333333333334,
+        "recall": 0.3194444444444444,
+        "f1-score": 0.4791666666666667,
+        "support": 216.0
+      },
+      "CONTRADICT": {
+        "precision": 0.8282828282828283,
+        "recall": 0.6721311475409836,
+        "f1-score": 0.7420814479638009,
+        "support": 122.0
+      },
+      "NOT_ENOUGH_INFO": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "accuracy": 0.4467455621301775,
+      "macro avg": {
+        "precision": 0.5955387205387206,
+        "recall": 0.330525197328476,
+        "f1-score": 0.4070827048768226,
+        "support": 338.0
+      },
+      "weighted avg": {
+        "precision": 0.9113920267766422,
+        "recall": 0.4467455621301775,
+        "f1-score": 0.5740649013360465,
+        "support": 338.0
+      }
+    },
+    "confusion_matrix_at_0.95": [
+      [
+        69,
+        17,
+        130
+      ],
+      [
+        3,
+        82,
+        37
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "confusion_matrix_labels": [
+      "SUPPORT",
+      "CONTRADICT",
+      "NOT_ENOUGH_INFO"
+    ],
     "threshold_sweep": [
       {
         "threshold": 0.0,
@@ -89,7 +142,13 @@
         "macro_f1_support_contradict": 0.5712,
         "escalation_rate": 0.0,
         "nei_abstention_rate": 0.5178,
-        "avg_latency_ms": 99.34
+        "avg_latency_ms": 99.34,
+        "large_model_usage_rate": 0.0,
+        "decisive_coverage": 0.4822,
+        "decisive_accuracy": 0.8528,
+        "correct_count": 139,
+        "wrong_polarity_count": 24,
+        "nei_count": 175
       },
       {
         "threshold": 0.4,
@@ -98,7 +157,13 @@
         "macro_f1_support_contradict": 0.5712,
         "escalation_rate": 0.0,
         "nei_abstention_rate": 0.5178,
-        "avg_latency_ms": 99.34
+        "avg_latency_ms": 99.34,
+        "large_model_usage_rate": 0.0,
+        "decisive_coverage": 0.4822,
+        "decisive_accuracy": 0.8528,
+        "correct_count": 139,
+        "wrong_polarity_count": 24,
+        "nei_count": 175
       },
       {
         "threshold": 0.5,
@@ -107,7 +172,13 @@
         "macro_f1_support_contradict": 0.5712,
         "escalation_rate": 0.0059,
         "nei_abstention_rate": 0.5178,
-        "avg_latency_ms": 100.87
+        "avg_latency_ms": 100.87,
+        "large_model_usage_rate": 0.0059,
+        "decisive_coverage": 0.4822,
+        "decisive_accuracy": 0.8528,
+        "correct_count": 139,
+        "wrong_polarity_count": 24,
+        "nei_count": 175
       },
       {
         "threshold": 0.6,
@@ -116,7 +187,13 @@
         "macro_f1_support_contradict": 0.5698,
         "escalation_rate": 0.0651,
         "nei_abstention_rate": 0.5296,
-        "avg_latency_ms": 116.93
+        "avg_latency_ms": 116.93,
+        "large_model_usage_rate": 0.0651,
+        "decisive_coverage": 0.4704,
+        "decisive_accuracy": 0.8616,
+        "correct_count": 137,
+        "wrong_polarity_count": 22,
+        "nei_count": 179
       },
       {
         "threshold": 0.7,
@@ -125,7 +202,13 @@
         "macro_f1_support_contradict": 0.5717,
         "escalation_rate": 0.1272,
         "nei_abstention_rate": 0.5266,
-        "avg_latency_ms": 133.11
+        "avg_latency_ms": 133.11,
+        "large_model_usage_rate": 0.1272,
+        "decisive_coverage": 0.4734,
+        "decisive_accuracy": 0.8625,
+        "correct_count": 138,
+        "wrong_polarity_count": 22,
+        "nei_count": 178
       },
       {
         "threshold": 0.8,
@@ -134,7 +217,13 @@
         "macro_f1_support_contradict": 0.5883,
         "escalation_rate": 0.2012,
         "nei_abstention_rate": 0.5178,
-        "avg_latency_ms": 152.26
+        "avg_latency_ms": 152.26,
+        "large_model_usage_rate": 0.2012,
+        "decisive_coverage": 0.4822,
+        "decisive_accuracy": 0.8773,
+        "correct_count": 143,
+        "wrong_polarity_count": 20,
+        "nei_count": 175
       },
       {
         "threshold": 0.9,
@@ -143,7 +232,13 @@
         "macro_f1_support_contradict": 0.5983,
         "escalation_rate": 0.3284,
         "nei_abstention_rate": 0.5118,
-        "avg_latency_ms": 188.68
+        "avg_latency_ms": 188.68,
+        "large_model_usage_rate": 0.3284,
+        "decisive_coverage": 0.4882,
+        "decisive_accuracy": 0.8848,
+        "correct_count": 146,
+        "wrong_polarity_count": 19,
+        "nei_count": 173
       },
       {
         "threshold": 0.95,
@@ -152,26 +247,60 @@
         "macro_f1_support_contradict": 0.6106,
         "escalation_rate": 0.4586,
         "nei_abstention_rate": 0.4941,
-        "avg_latency_ms": 222.93
+        "avg_latency_ms": 222.93,
+        "large_model_usage_rate": 0.4586,
+        "decisive_coverage": 0.5059,
+        "decisive_accuracy": 0.883,
+        "correct_count": 151,
+        "wrong_polarity_count": 20,
+        "nei_count": 167
       },
       {
         "threshold": 1.01,
         "mode": "large_only",
         "accuracy": 0.4556,
         "macro_f1_support_contradict": 0.625,
-        "escalation_rate": 1.0,
+        "escalation_rate": null,
         "nei_abstention_rate": 0.497,
-        "avg_latency_ms": 365.58
+        "avg_latency_ms": 266.24,
+        "large_model_usage_rate": 1.0,
+        "decisive_coverage": 0.503,
+        "decisive_accuracy": 0.9059,
+        "correct_count": 154,
+        "wrong_polarity_count": 16,
+        "nei_count": 168
       }
-    ]
+    ],
+    "majority_baseline": {
+      "label": "SUPPORT",
+      "accuracy": 0.6391,
+      "macro_f1_support_contradict": 0.3899
+    },
+    "selected_latency_saving_percent": 16.27
   },
   "end_to_end_sample": {
     "sample_size": 60,
-    "end_to_end_accuracy": 0.45,
-    "end_to_end_macro_f1_support_contradict": 0.5569,
+    "end_to_end_accuracy": 0.4333,
+    "end_to_end_macro_f1_support_contradict": 0.5296,
     "gold_doc_recall_at_3": 0.8333,
-    "nei_abstention_rate": 0.3667,
-    "cross_source_conflict_cases": 4
+    "gold_doc_hit_rate_at_3": 0.8333,
+    "joint_label_and_gold_doc_hit_rate": 0.3833,
+    "joint_label_and_gold_doc_hit_count": 23,
+    "nei_abstention_rate": 0.35,
+    "decisive_coverage": 0.65,
+    "decisive_accuracy": 0.6667,
+    "correct_count": 26,
+    "wrong_polarity_count": 13,
+    "nei_count": 21,
+    "cross_source_conflict_cases": 4,
+    "split": "dev",
+    "sampling_method": "First eligible gold-annotated dev claims",
+    "routing_threshold": 0.95,
+    "retrieval_k": 3,
+    "rationale_threshold": 0.4,
+    "rationale_top_k": 3,
+    "aggregation": "Highest-confidence decisive source prediction; otherwise NOT_ENOUGH_INFO",
+    "selected_gold_source_and_correct_label_rate": 0.3
   },
   "consistency_edits": {
     "num_cases": 5,
@@ -223,6 +352,263 @@
         "negated_label": "SUPPORT",
         "negation_flipped": true
       }
-    ]
+    ],
+    "routing_threshold": 0.6
+  },
+  "retrieval_ablation": {
+    "split": "dev",
+    "num_dev_claims_total": 300,
+    "num_evaluated_claims": 188,
+    "num_corpus_documents": 5183,
+    "configurations": {
+      "TF-IDF": {
+        "lexical_weight": 1.0,
+        "dense_weight": 0.0
+      },
+      "MiniLM": {
+        "lexical_weight": 0.0,
+        "dense_weight": 1.0
+      },
+      "Hybrid": {
+        "lexical_weight": 0.5,
+        "dense_weight": 0.5
+      }
+    },
+    "retrieval_cutoffs": [
+      1,
+      3,
+      5,
+      10
+    ],
+    "averaging_method": "Macro-average across gold-annotated claims",
+    "evaluation_scope": "Claims with annotated gold evidence only. Unannotated documents are not necessarily irrelevant.",
+    "results": [
+      {
+        "method": "TF-IDF",
+        "lexical_weight": 1.0,
+        "dense_weight": 0.0,
+        "k": 1,
+        "num_claims": 188,
+        "recall": 0.6206,
+        "precision": 0.6436,
+        "hit_rate": 0.6436,
+        "mrr": 0.6436
+      },
+      {
+        "method": "TF-IDF",
+        "lexical_weight": 1.0,
+        "dense_weight": 0.0,
+        "k": 3,
+        "num_claims": 188,
+        "recall": 0.8036,
+        "precision": 0.2801,
+        "hit_rate": 0.8191,
+        "mrr": 0.7234
+      },
+      {
+        "method": "TF-IDF",
+        "lexical_weight": 1.0,
+        "dense_weight": 0.0,
+        "k": 5,
+        "num_claims": 188,
+        "recall": 0.8506,
+        "precision": 0.1798,
+        "hit_rate": 0.867,
+        "mrr": 0.7338
+      },
+      {
+        "method": "TF-IDF",
+        "lexical_weight": 1.0,
+        "dense_weight": 0.0,
+        "k": 10,
+        "num_claims": 188,
+        "recall": 0.8998,
+        "precision": 0.0963,
+        "hit_rate": 0.9096,
+        "mrr": 0.7394
+      },
+      {
+        "method": "MiniLM",
+        "lexical_weight": 0.0,
+        "dense_weight": 1.0,
+        "k": 1,
+        "num_claims": 188,
+        "recall": 0.6055,
+        "precision": 0.617,
+        "hit_rate": 0.617,
+        "mrr": 0.617
+      },
+      {
+        "method": "MiniLM",
+        "lexical_weight": 0.0,
+        "dense_weight": 1.0,
+        "k": 3,
+        "num_claims": 188,
+        "recall": 0.8043,
+        "precision": 0.2819,
+        "hit_rate": 0.8245,
+        "mrr": 0.7092
+      },
+      {
+        "method": "MiniLM",
+        "lexical_weight": 0.0,
+        "dense_weight": 1.0,
+        "k": 5,
+        "num_claims": 188,
+        "recall": 0.8685,
+        "precision": 0.1872,
+        "hit_rate": 0.8777,
+        "mrr": 0.7212
+      },
+      {
+        "method": "MiniLM",
+        "lexical_weight": 0.0,
+        "dense_weight": 1.0,
+        "k": 10,
+        "num_claims": 188,
+        "recall": 0.9117,
+        "precision": 0.1,
+        "hit_rate": 0.9202,
+        "mrr": 0.7267
+      },
+      {
+        "method": "Hybrid",
+        "lexical_weight": 0.5,
+        "dense_weight": 0.5,
+        "k": 1,
+        "num_claims": 188,
+        "recall": 0.6844,
+        "precision": 0.7074,
+        "hit_rate": 0.7074,
+        "mrr": 0.7074
+      },
+      {
+        "method": "Hybrid",
+        "lexical_weight": 0.5,
+        "dense_weight": 0.5,
+        "k": 3,
+        "num_claims": 188,
+        "recall": 0.8326,
+        "precision": 0.2926,
+        "hit_rate": 0.8511,
+        "mrr": 0.7722
+      },
+      {
+        "method": "Hybrid",
+        "lexical_weight": 0.5,
+        "dense_weight": 0.5,
+        "k": 5,
+        "num_claims": 188,
+        "recall": 0.8956,
+        "precision": 0.1904,
+        "hit_rate": 0.9149,
+        "mrr": 0.7865
+      },
+      {
+        "method": "Hybrid",
+        "lexical_weight": 0.5,
+        "dense_weight": 0.5,
+        "k": 10,
+        "num_claims": 188,
+        "recall": 0.9638,
+        "precision": 0.1053,
+        "hit_rate": 0.9734,
+        "mrr": 0.7943
+      }
+    ],
+    "historical_hybrid_comparison": [
+      {
+        "k": 1,
+        "historical_recall": 0.6844,
+        "current_recall": 0.6844,
+        "difference": 0.0
+      },
+      {
+        "k": 3,
+        "historical_recall": 0.8326,
+        "current_recall": 0.8326,
+        "difference": 0.0
+      },
+      {
+        "k": 5,
+        "historical_recall": 0.8956,
+        "current_recall": 0.8956,
+        "difference": 0.0
+      },
+      {
+        "k": 10,
+        "historical_recall": 0.9638,
+        "current_recall": 0.9638,
+        "difference": 0.0
+      }
+    ],
+    "best_recall_at_3": {
+      "methods": [
+        "Hybrid"
+      ],
+      "score": 0.8326
+    },
+    "best_mrr_at_10": {
+      "methods": [
+        "Hybrid"
+      ],
+      "score": 0.7943
+    }
+  },
+  "rationale_selection": {
+    "split": "dev",
+    "evaluation_type": "Oracle-document sentence selection",
+    "num_claims": 188,
+    "num_claim_document_pairs": 209,
+    "num_gold_rationale_sets": 338,
+    "threshold": 0.4,
+    "top_k": 3,
+    "model": "sentence-transformers/all-MiniLM-L6-v2",
+    "gold_annotation_method": "Union of annotated sentence indices per claim-document pair",
+    "complete_rationale_definition": "At least one complete annotated rationale set is contained in the predicted sentences",
+    "baseline": "First three nonempty abstract sentences",
+    "macro_averaging": "Equal weight per claim-document pair",
+    "fallback_count": 1,
+    "fallback_rate": 0.0048,
+    "elapsed_seconds": 42.8,
+    "results": [
+      {
+        "method": "First-3 baseline",
+        "num_pairs": 209,
+        "macro_precision": 0.0957,
+        "macro_recall": 0.1876,
+        "macro_f1": 0.1192,
+        "micro_precision": 0.0957,
+        "micro_recall": 0.1639,
+        "micro_f1": 0.1208,
+        "sentence_hit_rate": 0.2632,
+        "exact_match_rate": 0.0,
+        "complete_rationale_rate": 0.2201,
+        "mean_selected_sentences": 3.0,
+        "mean_gold_sentences": 1.7512,
+        "true_positives": 60,
+        "false_positives": 567,
+        "false_negatives": 306
+      },
+      {
+        "method": "MiniLM selector",
+        "num_pairs": 209,
+        "macro_precision": 0.3756,
+        "macro_recall": 0.6452,
+        "macro_f1": 0.4421,
+        "micro_precision": 0.3618,
+        "micro_recall": 0.5792,
+        "micro_f1": 0.4454,
+        "sentence_hit_rate": 0.8086,
+        "exact_match_rate": 0.0239,
+        "complete_rationale_rate": 0.7703,
+        "mean_selected_sentences": 2.8038,
+        "mean_gold_sentences": 1.7512,
+        "true_positives": 212,
+        "false_positives": 374,
+        "false_negatives": 154
+      }
+    ],
+    "limitation": "Gold documents are supplied directly. Results isolate sentence selection and do not measure retrieval failures or end-to-end verification accuracy."
   }
 }
