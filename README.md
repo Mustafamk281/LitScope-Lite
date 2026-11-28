@@ -176,6 +176,40 @@ Each notebook includes integrity assertions and displays `PASS` status lines on 
 - `outputs/eda/eda_summary.json`: EDA metrics and figure inventory.
 - `outputs/preprocessing/03_preprocessing_summary.json`: preprocessing statistics.
 
+## Phase 2: Modeling, Two-Tier Routing & Evaluation
+
+### End-to-End Pipeline & CLI
+The complete four-module pipeline (`src/pipeline.py`, `main.py`) integrates claim segmentation, hybrid retrieval (TF-IDF + `all-MiniLM-L6-v2`), sentence-level rationale selection (`threshold=0.40`, `top_k=3`), and two-tier zero-shot NLI stance classification (`nli-deberta-v3-xsmall` -> `nli-deberta-v3-base`).
+
+```bash
+# Run verification on raw scientific claims
+python main.py --text "Vitamin D deficiency is associated with an increased risk of osteoporosis."
+
+# Reproduce all Phase 2 benchmarks on SciFact dev
+python -m src.evaluate_phase2
+```
+
+### Key Evaluation Results (SciFact Dev Set)
+Full analysis, confusion matrices, and plots are in [`notebooks/04_modeling_evaluation.ipynb`](notebooks/04_modeling_evaluation.ipynb) and [`reports/Phase2_Evaluation_Report.md`](reports/Phase2_Evaluation_Report.md).
+
+- **Hybrid Retrieval (188 gold-annotated claims):** **83.26% Recall@3**, **89.56% Recall@5**, **96.38% Recall@10**, and **0.7943 MRR@10** (`images/04_01_retrieval_recall_precision_curve.png`).
+- **Two-Tier Routing Ablation (338 gold claim-rationale pairs):** Calibrating the escalation threshold from `0.60` to **`0.95`** improves accuracy from `40.53%` to **`44.67%`** (Macro-F1 `0.5698` -> **`0.6106`**), recovering **98%** of `large_only` accuracy (`45.56%`) while cutting average CPU latency by **39.0%** (`222.9 ms` vs. `365.6 ms`) (`images/04_02_routing_accuracy_latency_tradeoff.png`).
+- **End-to-End Pipeline (60 dev claims, no oracle rationales):** **83.33% Recall@3**, **45.00% accuracy**, **0.5569 Macro-F1**, and **4 cross-source conflict cases** surfaced (`images/04_05_end_to_end_outcomes.png`).
+- **Controlled Claim-Edit Consistency (5 test cases):** **100% (5/5)** paraphrase consistency and **100% (5/5)** negation-flip rate.
+
+## Interactive Web Application (`web/app.py`)
+
+LitScope-Lite includes a Streamlit web interface in the `web/` directory allowing users to enter scientific claims, tune retrieval (`Top-K`) and two-tier routing thresholds (`tau`), and inspect verdict badges, confidence scores, model routing tiers, and extracted rationale sentences.
+
+```bash
+# Launch the interactive web app locally
+streamlit run web/app.py
+```
+
+## Conclusion
+
+LitScope-Lite demonstrates that a lightweight, CPU-friendly four-module pipeline can verify biomedical claims with transparent, sentence-level rationales. Hybrid TF-IDF + MiniLM retrieval achieves **89.56% Recall@5** and **96.38% Recall@10** (`MRR@10 = 0.7943`), while calibrating the two-tier DeBERTa NLI escalation threshold to **`0.95`** recovers **98%** of the larger model's accuracy while cutting average CPU inference latency by **39.0%**. In practice, the system provides reliable perturbation sensitivity (**100%** paraphrase consistency and negation flips) and surfaces cross-source evidence conflicts, while highlighting zero-shot biomedical domain adaptation as the primary avenue for future improvement.
+
 ## Scope and limitations
 
 - All statistical findings describe the supplied SciFact files, not general performance on arbitrary scientific literature.

@@ -1,0 +1,6 @@
+original_claim,orig_label,orig_conf,paraphrase_label,paraphrase_consistent,negated_label,negation_flipped
+Vitamin D deficiency is associated with an increased risk of osteoporosis.,SUPPORT,0.9935,SUPPORT,True,CONTRADICT,True
+Aspirin reduces the risk of myocardial infarction in high-risk patients.,SUPPORT,0.9934,SUPPORT,True,CONTRADICT,True
+Elevated blood glucose levels impair wound healing in diabetic patients.,SUPPORT,0.9883,SUPPORT,True,CONTRADICT,True
+Regular aerobic exercise lowers resting systolic blood pressure.,SUPPORT,0.993,SUPPORT,True,CONTRADICT,True
+Antibiotics are effective against viral respiratory infections.,CONTRADICT,0.998,CONTRADICT,True,SUPPORT,True
