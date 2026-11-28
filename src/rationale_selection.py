@@ -1,7 +1,7 @@
 """Module 3: Rationale / Sentence-Level Evidence Selection for LitScope-Lite.
 
 Identifies and extracts salient evidence sentences from retrieved candidate documents
-given a scientific claim using dense semantic similarity with sentence-transformers.
+given a mscientific claim using dense semantic similarity with sentence-transformers.
 """
 
 from typing import Any, Dict, List, Optional, Union
